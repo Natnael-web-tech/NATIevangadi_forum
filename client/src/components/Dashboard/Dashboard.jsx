@@ -25,14 +25,13 @@ const Dashboard = ({ home }) => {
         const allQuestions = questionsRes.data.questions;
 
         // Calculate total likes
-        const totalLikes = allQuestions.reduce(
-          (sum, q) => sum + (q.likes || 0),
-          0
-        );
-        const totaldisLikes = allQuestions.reduce(
-          (sum, q) => sum + (q.dislike || 0),
-          0
-        );
+        const totalLikes = Array.isArray(allQuestions)
+          ? allQuestions.reduce((sum, q) => sum + (q.likes || 0), 0)
+          : 0;
+
+        const totalDisLikes = Array.isArray(allQuestions)
+          ? allQuestions.reduce((sum, q) => sum + (q.dislike || 0), 0)
+          : 0;
         // Fetch answers
         const answersRes = await axios.get("/answers", {
           headers: { Authorization: `Bearer ${token} ` },

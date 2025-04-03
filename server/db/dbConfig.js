@@ -1,6 +1,4 @@
 const mysql = require("mysql2");
-const dotenv = require("dotenv");
-dotenv.config();
 const db = mysql.createPool({
   host: "82.197.82.65",
   user: "u435044055_evangadi_admin",
