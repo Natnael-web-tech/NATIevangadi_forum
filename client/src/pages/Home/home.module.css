@@ -2,7 +2,7 @@
 .container {
   max-width: 1200px;
   width: 90%;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   padding: 20px;
   font-family: var(--primary-font);
   overflow: hidden;
@@ -10,9 +10,12 @@
 
 .home_main_wrapper {
   overflow-x: hidden;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
 }
-/* Welcome User Section */
 
+/* Welcome User Section */
 .profileContainer {
   position: absolute;
   top: 10px;
@@ -21,6 +24,7 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  z-index: 100;
 }
 
 .profileIcon {
@@ -115,20 +119,6 @@
   min-height: 80px;
 }
 
-.uploadLabel {
-  display: block;
-  margin: 15px 0;
-  padding: 8px 12px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.uploadInput {
-  display: none;
-}
-
 .saveButton {
   display: block;
   width: 100%;
@@ -149,6 +139,7 @@
   background-color: #cccccc;
   cursor: not-allowed;
 }
+
 /* Ask Question Section */
 .askQuestionContainer {
   display: flex;
@@ -181,12 +172,14 @@
   border: 1px solid #a2a2a2;
   border-radius: 5px;
   font-size: 1rem;
+  width: 100%;
 }
 
 .searchInput:focus {
   box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.75);
   border-color: none;
   border: none;
+  outline: none;
 }
 
 /* Questions Heading */
@@ -208,12 +201,13 @@
 /* List Item */
 .listItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 15px;
   border-bottom: 2px solid #ddd;
   text-decoration: none;
   color: inherit;
   transition: background-color 0.3s ease;
+  flex-wrap: wrap;
 }
 
 .listItem:hover {
@@ -227,6 +221,7 @@
   align-items: center;
   margin-right: 20px;
   color: rgb(153, 153, 153);
+  min-width: 60px;
 }
 
 .username {
@@ -243,29 +238,21 @@
   outline: 0.5px solid lightgray;
   padding: 0.1rem 0.3rem;
   border-radius: 0.3rem;
+  font-size: 0.8rem;
 }
 
 /* Question Text */
 .questionText {
   flex-grow: 1;
   font-weight: lighter;
+  min-width: 200px;
 }
 
 .questionTitle {
   text-align: start;
   font-weight: 400;
   margin: 0;
-}
-
-/* Loading and No Questions Text */
-.loadingText,
-.noQuestionsText {
-  text-align: center;
-  font-size: 1rem;
-}
-
-.noQuestionsText {
-  color: #dc3545;
+  word-break: break-word;
 }
 
 /* Loading and No Questions Text */
@@ -283,8 +270,7 @@
   display: flex;
   justify-content: center;
   margin-block: 20px 0;
-  margin-left: 10px;
-  width: 50%;
+  width: 100%;
 }
 
 .paginationButton {
@@ -301,16 +287,20 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
+
 .questionMeta {
   margin-top: 1.5rem;
   margin-bottom: 0 !important;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
+
 .questionMeta svg {
   color: var(--old-button-hover-color);
   margin-right: 0.8rem;
 }
+
 .questionMeta p {
   color: rgb(0, 0, 0);
   font-weight: 200;
@@ -318,47 +308,55 @@
   display: flex;
   font-size: 0.9rem;
 }
+
 .nextIcon,
 .previousIcon {
   display: none;
 }
+
 .likesButtons {
   background-color: none;
   padding: 0;
   width: 10px;
 }
+
 .liked .likedIcon {
   color: #f57b2f;
   font-size: 1rem;
   transform: scale(1.1);
 }
+
 .likedIcon,
 .disLikedIcon {
   margin-right: 0 !important;
 }
+
 .likeText {
   margin-right: 10px;
 }
+
 .disliked .disLikedIcon {
   color: #f57b2f;
   transform: scale(1.1);
 }
+
 .tagAndLike_container {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
 }
+
 .like_container {
   display: flex;
   justify-content: space-between;
   gap: 10px;
   width: 80px;
 }
-.home_main_wrapper {
-  display: flex;
-  width: 100%;
-  margin: 0 auto;
-}
+
 .dashboardSpace {
-  margin: 0 80px;
+  margin: 0 20px;
+  width: 100%;
 }
 
 .backtotop {
@@ -374,35 +372,70 @@
   font-size: 11px;
   z-index: 1000;
 }
+
 .contributors {
-  width: 10%;
+  display: none;
 }
+
 .buttonsWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-.QuestionTypeButton {
+
+div .QuestionTypeButton {
   background-color: white;
-  outline: 1px solid #007bff;
-  color: #007bff;
+  outline: 1px solid #c3c5c8;
+  color: #7f8183;
+  padding: 2px 6px;
+  margin: 10px 6px;
+  border-radius: 6%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
+
 .QuestionTypeButton:hover {
   background-color: #007bff;
   color: white;
 }
+
 .QuestionTypeButton svg {
   margin-right: 0.5rem;
+  color: #574848;
 }
-.QuestionTypeButton {
-  margin-right: 0.7rem;
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .dashboardSpace {
+    margin: 0 40px;
+  }
 }
+
+@media (max-width: 992px) {
+  .dashboardSpace {
+    margin: 0 20px;
+  }
+
+  .profileContainer {
+    margin-top: 20px;
+    right: 20px;
+  }
+  
+  .profileBox {
+    height: 60vh;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
-    padding: 3rem 2.5rem;
-    width: 85%;
-    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    width: 90%;
   }
+  
   .nextIcon,
   .previousIcon {
     display: block;
@@ -412,24 +445,134 @@
   .previous {
     display: none;
   }
+  
   .paginationButton {
-    margin: 10px;
     padding: 0.5rem 1rem;
-    text-align: center;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    margin: 5px;
   }
+  
   .tagAndLike_container {
     display: none;
   }
+  
   .askQuestionButton {
     margin-left: 0;
+    width: 100%;
   }
+  
   .profileContainer {
-    top: 100px;
-    right: 40px;
+    top: 80px;
+    right: 20px;
   }
+  
+  .profileBox {
+    width: 220px;
+    height: 65vh;
+  }
+  
+  .questionMeta {
+    gap: 0.5rem;
+  }
+  
+  .questionMeta p {
+    margin-right: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .buttonsWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .QuestionTypeButton {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+    .contributors {
+  display: none;
+}
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 2rem 1rem;
+    width: 95%;
+  }
+  
+  .profileContainer {
+    top: 70px;
+    right: 10px;
+  }
+  
+  .profileImage {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .profileBox {
+    width: 200px;
+    height: 70vh;
+  }
+  
+  .questionsHeading {
+    font-size: 1.3rem;
+  }
+  
+  .listItem {
+    padding: 10px;
+    flex-direction: column;
+  }
+  
+  .profileSection {
+    flex-direction: row;
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .username {
+    width: auto;
+    margin-top: 0;
+    justify-content: flex-start;
+  }
+  
+  .questionText {
+    width: 100%;
+  }
+  
+  .paginationButton {
+    padding: 0.5rem;
+    margin: 3px;
+  }
+  
+  .backtotop {
+    bottom: 80px;
+    right: 10px;
+    padding: 5px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .profileBox {
+    width: 180px;
+  }
+  
+  .Name {
+    font-size: 0.9rem;
+  }
+  
+  .bioInput {
+    min-height: 60px;
+  }
+  
+  .saveButton {
+    padding: 8px;
+  }
+    .contributors {
+  display: none;
+}
 }

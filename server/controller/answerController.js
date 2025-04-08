@@ -16,7 +16,7 @@ const postAnswer = async (req, res) => {
     // Insert the answer into the database
     const userid = req.user.userid;
     await dbConnection.query(
-      "INSERT INTO answers (user_id,question_id, answer,likes,dislikes) VALUES (?,?,?,0,0)",
+      "INSERT INTO answers (user_id,question_id, answer,likes,dislike) VALUES (?,?,?,0,0)",
       [userid, question_id, answer]
     );
 

@@ -13,7 +13,7 @@ async function allQuestions(req, res) {
         q.created_at,
         q.tag,
         q.likes,
-        q.dislikes AS disLikes,
+        q.dislike AS disLikes,
         r.username AS user_name,
         IFNULL(r.username, 'Unknown User') AS user_name
       FROM 
@@ -83,7 +83,7 @@ async function postQuestion(req, res) {
     const tag = matchTag.length > 0 ? matchTag : ["General"];
     const stringTag = tag.join(",");
     await db.query(
-      "INSERT INTO questions (question_id,user_id,title,description,tag,likes,dislikes) VALUES (?,?,?,?,?,0,0) ",
+      "INSERT INTO questions (question_id,user_id,title,description,tag,likes,dislike) VALUES (?,?,?,?,?,0,0) ",
       [questionid, userid, title, description, stringTag]
     );
     return res
